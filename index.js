@@ -6,10 +6,10 @@ const port = 3000;
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'your_username',
-  password: 'your_password',
-  database: 'your_database'
+  server: 'group4db.database.windows.net',
+  user: 'group4',
+  password: 'Password@123',
+  database: 'group4db'
 });
 
 // Connect to the MySQL database
