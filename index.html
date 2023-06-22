@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Web App</title>
+</head>
+<body>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" />
+    <br>
+    <label for="email">Email:</label>
+    <input type="text" id="email" />
+    <br>
+    <button onclick="addData()">Add</button>
+    <button onclick="retrieveData()">Retrieve</button>
+  </div>
+
+  <script>
+    function addData() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      fetch('/addData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+
+    function retrieveData() {
+      fetch('/retrieveData')
+      .then(response => response.json())
+      .then(data => {
+        alert(JSON.stringify(data));
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
+</html>
